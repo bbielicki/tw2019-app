@@ -1,0 +1,41 @@
+version: '3'
+
+networks:
+  traffic:
+    driver: bridge
+
+services:
+  db:
+    image: postgres
+    networks:
+      - traffic
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: conduit
+
+  backend:
+    depends_on:
+      - db
+    image: backend
+    networks:
+      - traffic
+    ports:
+      - "5000:5000"
+    restart: always
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db/conduit
+
+  frontend:
+    depends_on:
+      - backend
+    image: frontend
+    ports:
+      - "80:80"
+    restart: always
+
+# volumes:
+#    db_data:
