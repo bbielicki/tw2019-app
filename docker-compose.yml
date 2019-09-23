@@ -37,5 +37,3 @@ services:
       - "80:80"
     restart: always
 
-# volumes:
-#    db_data:
