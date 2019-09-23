@@ -1,0 +1,8 @@
+[submodule "flask-realworld-example-app"]
+	path = flask-realworld-example-app
+	url = git@github.com:bbielicki/flask-realworld-example-app.git
+	branch = master
+[submodule "react-redux-realworld-example-app"]
+	path = react-redux-realworld-example-app
+	url = git@github.com:bbielicki/react-redux-realworld-example-app.git
+	branch = master
